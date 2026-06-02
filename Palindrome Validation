@@ -1,0 +1,26 @@
+function isPalindrome(str) {
+    let left = 0;
+    let right = str.length - 1;
+    
+    while(left < right) {
+        while(left < right && !alphaNumeric(str[left])) {
+            left++;
+        }
+        while(left < right && !alphaNumeric(str[right])) {
+            right--;
+        }
+        
+        if(str[left].toLowerCase() !== str[right].toLowerCase()) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+}
+
+function alphaNumeric(str) {
+    return /^[a-z0-9]$/i.test(str);
+}
+
+console.log(isPalindrome('12321')); //true
