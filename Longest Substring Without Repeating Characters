@@ -1,19 +1,18 @@
-function lengthOfLongestSubstring(char) {
-    let map = new Map();
+function lengthOfLongestSubstring(str) {
+    let set = new Set();
     let left = 0;
-    let maxLen = 0;
+    let maxLength = 0;
     
-    for(let right = 0; right < char.length; right++) {
-        let str = char[right];
-        // If character was seen and is inside the current window
-        if(map.has(str) && map.get(str) >= left) {
-            left = map.get(str) + 1;// move left pointer
+    for(let right = 0; right < str.length; right++) {
+        while(set.has(str[right])) {
+            set.delete(str[left]);
+            left++;
         }
         
-        map.set(str, right);// update last seen index
-        maxLen = Math.max(maxLen, right - left + 1);
+        set.add(str[right]);
+        maxLength = Math.max(maxLength, right - left + 1);
     }
-    return maxLen;
+    return maxLength;
 }
 
-console.log(lengthOfLongestSubstring('abcabcbb'));//3
+console.log(lengthOfLongestSubstring('abcabcdbb'));// 4
