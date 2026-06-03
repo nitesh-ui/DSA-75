@@ -1,0 +1,14 @@
+function rotateArr(arr, n) {
+    let newArr = [];
+    
+    for(let i = arr.length - n; i <= arr.length - 1; i++) {
+        newArr.push(arr[i]);
+    }
+    
+    for(let i = 0; i < arr.length - n; i++) {
+        newArr.push(arr[i]);
+    }
+    return newArr;
+}
+
+console.log(rotateArr([1,2,3,4], 3));
